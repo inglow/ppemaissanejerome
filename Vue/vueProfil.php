@@ -1,4 +1,4 @@
-<?php $this->titre = "Mon Blog - "; ?>
+<?php $this->titre = "Mon Profil - "; ?>
 <form method="post" >
 <h1> Son profil.</h1>
 
