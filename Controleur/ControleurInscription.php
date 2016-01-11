@@ -27,6 +27,15 @@ class ControleurInscription {
 
     }
 
+    public function email($email) 
+    {
+        $this->email->verifemail($email);
+    }
+    
+    public function pseudo($email) 
+    {
+        $this->pseudo->verifpseudo($email);
+    }
 }
 
 ?>
