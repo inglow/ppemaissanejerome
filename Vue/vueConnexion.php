@@ -17,4 +17,13 @@ if(isset($_SESSION['idp'])){echo "Vous êtes connecté";}else {?>
            required /><br/>
     <input type="submit" value="Connexion" name="connexion">
 </form>
-<?php } ?>
+<?php }
+
+<?php 
+if(isset($_POST['pseudo']) && $_POST['mdp'] != ''){
+    echo 'OK';
+}
+else{
+    echo 'Veuillez remplir correctement les champs';
+}
+?>?>
