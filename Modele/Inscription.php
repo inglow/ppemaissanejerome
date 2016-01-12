@@ -15,18 +15,13 @@ class Inscription extends Modele {
         $this->executerRequete($sql, array($nomp, $prenomp, $adresse, $cp, $telephone, $email, $pseudos, $avatar, $mdp));
     }
     
-    public function verifmail($email) 
+    public function verif($email,$pseudo) 
     {
-        $sql='SELECT email FROM personne  WHERE email=?';
-        $resultats->setFetchMode(PDO::FETCH_OBJ);
-        $this->executeRequete($sql, $email);
-    }
-    
-    public function verifpseudo($pseudo) 
-    {
-        $sql='SELECT pseudo FROM personne  WHERE pseudo=?';
-        $resultats->setFetchMode(PDO::FETCH_OBJ);
-        $this->executeRequete($sql, $pseudo);
+        $sql='SELECT email, pseudo FROM personne  WHERE email=? and pseudo=?';
+        $sql->bindParam(':pseudo', $pseudo);
+        $sql->bindParam(':email', $email);
+        $sql->execute();
+        return $sql;
     }
 }
 ?>
