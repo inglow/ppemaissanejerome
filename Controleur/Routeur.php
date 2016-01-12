@@ -45,7 +45,7 @@ class Routeur {
                         throw new Exception("Identifiant de billet non valide");
                 }
                 elseif ($_GET['action']=='inscription') {
-                  $this->ctrlInscription->inscription();
+                    $this->ctrlInscription->inscription();
 
                 }
                 else if ($_GET['action'] == 'connexion') {
@@ -112,13 +112,20 @@ class Routeur {
                     $avatar = $this->getParametre($_POST, 'avatar');
                     $mdp = $this->getParametre($_POST, 'mdp');
                     $mdp =md5($mdp);
-
+                    
 
 
                     $this->ctrlInscription->personne($nomp, $prenomp, $adresse, $cp, $telephone,  $email, $pseudo, $avatar, $mdp);
                     if(isset($_POST['Inscription']))
                     {
+                    $this->verif($email,$pseudo);
+                    if($etat != 0)
+                    {
+                    echo 'Ce mail / pseudo existe déjà';
+                    }
+                    else{
                     $this->ctrlConnexion->connexion();
+                    }
 
                     }
                 }
