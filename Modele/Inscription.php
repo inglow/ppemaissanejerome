@@ -21,6 +21,7 @@ class Inscription extends Modele {
         $sql->bindParam(':pseudo', $pseudo);
         $sql->bindParam(':email', $email);
         $sql->execute();
+        $etat = $sql->rowCount();
         return $sql;
     }
 }
