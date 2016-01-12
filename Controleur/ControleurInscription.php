@@ -18,6 +18,7 @@ class ControleurInscription {
 
         $vue = new Vue("Inscription");
         $vue->generer2();
+        $this->verif($email,$pseudo);
     }
 
 
@@ -27,15 +28,6 @@ class ControleurInscription {
 
     }
 
-    public function email($email) 
-    {
-        $this->email->verifemail($email);
-    }
-    
-    public function pseudo($email) 
-    {
-        $this->pseudo->verifpseudo($email);
-    }
 }
 
 ?>
