@@ -11,9 +11,9 @@
 
 if(isset($_SESSION['idp'])){echo "Vous êtes connecté";}else {?>
 <form method="post" action="index.php?action=connexion">
-   Votre Pseudo* : <input id="pseudo" name="pseudo" type="text" placeholder="Votre pseudo" 
+   Votre Pseudo* : <input id="pseudo" name="pseudo" minlength="6" type="text" placeholder="Votre pseudo" 
            required /><br/>
- Votre mot de passe : <input id="mdp" name="mdp" type="password" placeholder="Votre mot de passe" 
+ Votre mot de passe : <input id="mdp" name="mdp" type="password" minlength="6" placeholder="Votre mot de passe" 
            required /><br/>
     <input type="submit" value="Connexion" name="connexion">
 </form>
