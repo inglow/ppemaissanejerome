@@ -15,10 +15,13 @@
                 </div>
                 <div class="collapse navbar-collapse" id="main-navbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a   href="index.php"> <font class="glyphicon glyphicon-home"> Home</font></a>
+                        <li><a   href="index.php"> <font class="glyphicon glyphicon-home"> Accueil</font></a>
                         
-                        <li><a href="features.html">Features</a>
+                        <li><a href="features.html">Notre entreprise</a>
                         </li>
+                        <?php if(isset($_SESSION['idp'])){ ?>
+
+                        
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Votre espace membre<b class="caret"></b></a>
                          
@@ -33,48 +36,58 @@
                                 </li>
                             </ul>
                         </li>
+                     <?php   }
+                        else
+                        {
+                        }
+                        ?>
+                        <li><a href="features.html">Nos Services</a>
+                        </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Les coachs<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="blog.html">Blog Page</a>
+                                <li><a href="portfolio.html">Rendez-vous disponible</a>
                                 </li>
-                                <li><a href="single-blog.html">Single Post</a>
+                                <li><a href="single-portfolio.html">Liste des coachs disponible</a>
+                                </li>
+                                <li><a href="single-portfolio.html">Profil des coachs</a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="portfolio.html">Portfolio Page</a>
-                                </li>
-                                <li><a href="single-portfolio.html">Single Project</a>
-                                </li>
-                            </ul>
+                        <li><a href="contact.html">Contactez nous</a>
                         </li>
-                        <li><a href="contact.html">Contact Us</a>
-                        </li>
+                          <?php if(isset($_SESSION['idp'])){
+
+                        }
+                        else
+                        {
+
+                        ?>
                         <li class="">
-                            <a data-toggle="modal" href="#signUpModal" class="">Sign Up</a>
+                            <a data-toggle="modal" href="#index.php?action=inscription" class="">Inscription</a>
                         </li>
+                     
                         <li class="dropdown">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Sign In <b class="caret"></b></a>
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Connexion <b class="caret"></b></a>
                             <div class="dropdown-menu" style="padding: 15px;">
-                                <form role="form" class="form-menu">
+                                <form role="form" class="form-menu" method="post" action="index.php?action=connexion">
+                                    
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Username">
+                                        <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Username">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password">
+                                        <input type="password" class="form-control"  id="mdp" name="mdp"placeholder="Password">
                                     </div>
                                     <div class="checkbox">
                                         <label class="text-muted">
-                                            <input type="checkbox">Remember me
+                                            <input type="checkbox">Souvenez vous de moi!
                                         </label>
                                     </div>
-                                    <button type="submit" class="btn btn-block btn-purity">Submit</button>
+                                    <button type="submit" class="btn btn-block btn-purity" value="Connexion" name="connexion">Connexion</button>
                                 </form>
                             </div>
                         </li>
+                    <?php } ?>
                     </ul>
                 </div>
             </div>
