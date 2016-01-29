@@ -9,13 +9,23 @@ require_once 'Modele/Modele.php';
 class Visiteur extends Modele {
 
 // Renvoie la liste des commentaires associés à un billet
-
+public $visite;
     // Ajoute un commentaire dans la base
-    public function ajouterVisiteur($ip, $agent, $reference) {
-        $sql = "INSERT INTO stats_visites (id,ip,agent,reference,date_visite)
-  									   VALUES (NULL,?,?,?,CURRENT_TIMESTAMP)";
+    public function ajouterVisiteur($ip, $agent, $reference, $port ,$langue, $url) {
 
-        $this->executerRequete($sql, array($ip, $agent, $reference));
+        $sql = "INSERT INTO stats_visites (id,ip,agent,reference,port,langue,url,date_visite)
+  									   VALUES (NULL,?,?,?,?,?,?,CURDATE())";
+
+        $this->executerRequete($sql, array($ip, $agent, $reference, $port, $langue, $url));
     }
-}
+public function visiteurparjour() {
+
+        $sql = "SELECT COUNT(*) as nb1 FROM stats_visites where date_visite=curdate();";
+$resultat2=$this->executerRequete($sql);
+
+            return $resultat2;
+				
+
+        
+    }}
 ?>

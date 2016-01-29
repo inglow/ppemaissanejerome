@@ -1,21 +1,32 @@
 <?php
 require_once 'Modele/Visiteur.php';
+require_once 'Vue/Vue.php';
+
 class ControleurVisiteur
 {
 protected $ip;
 protected $agent;
 protected $referent;
 protected $date_fr;
+protected $port;
+protected $url;
+protected $langue;
+
 private $Visiteur;
 public function __construct()
 	{
     $this->Visiteur = new Visiteur();
     $ip=$this->getIp();
     $agent=$this->getAgent();
-    $reference=$this->getReferent();
+    $port=$this->getPort();
+    $url=$this->getUrl();
+    $langue=$this->getLangue();
 
 
-  $this->Visiteur->ajouterVisiteur($ip, $agent, $reference);
+    	$this->url=$_SERVER['REQUEST_URI'];
+    	$this->langue=$_SERVER['HTTP_ACCEPT_LANGUAGE'];
+
+    	$this->port=$_SERVER['REMOTE_PORT'];
 		$this->ip =gethostbyname($_SERVER['REMOTE_ADDR']); 	//Adresse IP Visiteur
 		$this->agent =$_SERVER['HTTP_USER_AGENT'];			//Information Navigateur
 		if(empty($_SERVER['HTTP_REFERER']))				//site référent ou accès direct au site
@@ -25,9 +36,34 @@ public function __construct()
 				else
 				{
 					$this->referent= addslashes($_SERVER['HTTP_REFERER']);
+
+
 				}//fin site référent
-		$this->date_fr = date('j/m/Y;H:i:s',time());
+				  $this->Visiteur->ajouterVisiteur($this->getIp(), $this->getAgent(), $this->getReferent(), $this->getPort(), $this->getLangue(), $this->getUrl());	
+				$this->Visiteur->visiteurparjour();
+				
 	} //Fin construct
+	  public function visiteur() {
+     $resultat2=$this->Visiteur->visiteurparjour();
+       foreach ($resultat2 as $resultats) {
+                 $result=$resultats['nb1'];
+                    
+                }
+        $vue = new Vue("Visiteur");
+        $vue->generer(array('result' => $result));
+    }
+	public function getPort()
+	{
+	return $this->port;
+	}
+	public function getLangue()
+	{
+	return $this->langue;
+	}
+	public function getUrl()
+	{
+	return $this->url;
+	}
 public function getIp()
 	{
 	return $this->ip;
@@ -39,10 +75,6 @@ public function getAgent()
 public function getReferent()
 	{
 	return $this->referent;
-	}
-public function getDate_fr()
-	{
-	return $this->date_fr;
 	}
 public function addToFile($file)
 	{

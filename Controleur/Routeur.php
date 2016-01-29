@@ -19,6 +19,8 @@ class Routeur {
     private $ctrlProfil;
     private $ctrlConnexion;
     private $ctrlAdmin;
+    private $ctrlVisiteur;
+
 
     public function __construct() {
         $this->ctrlAccueil = new ControleurAccueil();
@@ -27,6 +29,8 @@ class Routeur {
         $this->ctrlProfil= new ControleurProfil();
         $this->ctrlConnexion= new ControleurConnexion();
         $this->ctrlAdmin= new ControleurAdmin();
+        $this->ctrlVisiteur= new ControleurVisiteur();
+
 
       session_start();
     }
@@ -49,7 +53,7 @@ class Routeur {
 
                 }
                 else if ($_GET['action'] == 'connexion') {
-                    $message='vous avez réussis';
+                
                     if(isset($_POST['connexion']))
                     {
                         $pseudo = $this->getParametre($_POST, 'pseudo');
@@ -91,6 +95,11 @@ class Routeur {
                 }
                 elseif ($_GET['action']=='deconnexion') {
                     $this->ctrlConnexion->deconnexion();
+                
+                }
+                 elseif ($_GET['action']=='visiteur') {
+     $this->ctrlVisiteur->visiteur("Visiteur");
+            
                 
                 }
                 else if ($_GET['action'] == 'commenter') {
