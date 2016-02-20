@@ -21,8 +21,6 @@ public function __construct()
     $port=$this->getPort();
     $url=$this->getUrl();
     $langue=$this->getLangue();
-
-
     	$this->url=$_SERVER['REQUEST_URI'];
     	$this->langue=$_SERVER['HTTP_ACCEPT_LANGUAGE'];
 
@@ -44,13 +42,15 @@ public function __construct()
 				
 	} //Fin construct
 	  public function visiteur() {
+     $resultat1=$this->Visiteur->getVisiteurs();
+
      $resultat2=$this->Visiteur->visiteurparjour();
        foreach ($resultat2 as $resultats) {
                  $result=$resultats['nb1'];
                     
                 }
         $vue = new Vue("Visiteur");
-        $vue->generer(array('result' => $result));
+        $vue->generer(array('result' => $result, 'resultat1' => $resultat1));
     }
 	public function getPort()
 	{
@@ -81,25 +81,11 @@ public function addToFile($file)
 	//Stockage sur disque dans un fichier Visites.txt
 		$fichier=fopen($file,"a+"); //création si inexistant + Ajout en fin de fichier
 		$ret_char=chr(13);
-		$chaine_to_write=$this->getIp().";".$this->getAgent().";".$this->getDate_fr().";".$this->getReferent().";".$ret_char;
+		$chaine_to_write=$this->getIp().";".$this->getAgent().";".$this->getReferent().";".$ret_char;
 		$chaine=fwrite($fichier,$chaine_to_write);
 		fclose($fichier);//Fin enregistrement sur disque
 	}
-public function sendToBdd($hote,$utilisateur,$motdepasse,$basededonnees)
-	{
-	// Ajout d'un enregsitrement dans la base de données
-	//Stucture : TABLE :visites CHAMPS (id,ip,agent,referent,date_visite)
-	$mysqli = new mysqli($hote,$utilisateur,$motdepasse,$basededonnees);
-	if ($mysqli->connect_errno)
-		{echo "Echec lors de la connexion à MySQL : " . $mysqli->connect_error;}
-		else
-		{   //Connexion à la base de données établie
-			$adresseIp=$this->getIp();$navigateur=$this->getAgent();$provenance=$this->getReferent();
-			$requete = $mysqli->query("INSERT INTO stats_visites (id,ip,agent,reference,date_visite)
-									   VALUES (NULL,'$adresseIp','$navigateur','$provenance',CURRENT_TIMESTAMP)");
-		}
-	$mysqli->close();
-	}
+
 } // Fin Visites
 // Améliorations à apporter dans une prochaine version
 // Utiliser les Expressions régulière pour travailler les chaines de caractères issues de la variable agent
