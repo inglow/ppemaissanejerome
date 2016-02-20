@@ -5,7 +5,7 @@ Elle a été crée en 2010 par un  Coach sportif de profession et deux autres am
 Nous sommes la seule enseigne sportive qui  propose des cours personnels a coût réduit.</h4>
 <?php foreach ($billets as $billet):
     ?>
-    <article>
+    
        
             <a href="<?= "index.php?action=billet&id=" . $billet['id'] ?>">
                 <h1 class="titreBillet"><?= $billet['titre'] ?></h1>
@@ -13,6 +13,6 @@ Nous sommes la seule enseigne sportive qui  propose des cours personnels a coût
             <time><?= $billet['date'] ?></time>
         
         <p><?= $billet['contenu'] ?></p>
-    </article>
+    
     <hr />
 <?php endforeach; ?>

@@ -27,5 +27,13 @@ $resultat2=$this->executerRequete($sql);
 				
 
         
-    }}
+    }
+public function getVisiteurs() {
+        $sql = 'select * from stats_visites'
+             
+                . ' order by id desc limit 1;';
+        $visiteurs = $this->executerRequete($sql);
+        return $visiteurs;
+    }
+}
 ?>
