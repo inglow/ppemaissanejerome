@@ -26,9 +26,9 @@
 						else{ ?>
 								<form method="post" action="index.php?action=connexion">
 
-	 <font class="rouge">Votre Pseudo*</font> : <input id="pseudo" name="pseudo" type="text" placeholder="Votre pseudo" 
+	 <font class="rouge">Votre Pseudo*</font> : <input id="pseudddo" name="pseudoc" type="text" placeholder="Votre pseudo" 
 					 required />
- <font class="rouge">Votre mot de passe : </font><input id="mdp" name="mdp" type="password" placeholder="Votre mot de passe" 
+ <font class="rouge">Votre mot de passe : </font><input id="mdddp" name="mdpc" type="password" placeholder="Votre mot de passe" 
 					 required />
 		<input type="submit" class="btn btn-danger"value="Connexion" name="connexion" >
 

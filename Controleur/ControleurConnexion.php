@@ -34,7 +34,7 @@ class ControleurConnexion {
 
         $connexions=$this->connexion->wantConnexion($pseudo, $mdp);
                             $_SESSION['pseudo']=$connexions['pseudo'];
-                            $_SESSION['idp']=$connexions['idp'];
+                            $_SESSION['idp']=$connexions['idpcl'];
                             $_SESSION['nomp']=$connexions['nomp'];
                             $_SESSION['prenomp']=$connexions['prenomp'];
                             $_SESSION['adresse']=$connexions['adresse'];

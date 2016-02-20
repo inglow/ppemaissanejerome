@@ -7,6 +7,9 @@ require_once 'Controleur/ControleurVisiteur.php';
 require_once 'Controleur/ControleurProfil.php';
 require_once 'Controleur/ControleurConnexion.php';
 require_once 'Controleur/ControleurAdministrateur.php';
+require_once 'Controleur/ControleurContact.php';
+require_once 'Controleur/ControleurService.php';
+require_once 'Controleur/ControleurEntreprise.php';
 
 
 
@@ -20,6 +23,10 @@ class Routeur {
     private $ctrlConnexion;
     private $ctrlAdmin;
     private $ctrlVisiteur;
+    private $ctrlContact;
+    private $ctrlEntreprise;
+    private $ctrlService;
+
 
 
     public function __construct() {
@@ -30,8 +37,9 @@ class Routeur {
         $this->ctrlConnexion= new ControleurConnexion();
         $this->ctrlAdmin= new ControleurAdmin();
         $this->ctrlVisiteur= new ControleurVisiteur();
-
-
+        $this->ctrlContact= new ControleurContact();
+        $this->ctrlEntreprise= new ControleurEntreprise();
+        $this->ctrlService= new ControleurService();
       session_start();
     }
 
@@ -56,8 +64,8 @@ class Routeur {
                 
                     if(isset($_POST['connexion']))
                     {
-                        $pseudo = $this->getParametre($_POST, 'pseudo');
-                        $mdp = $this->getParametre($_POST, 'mdp');
+                        $pseudo = $this->getParametre($_POST, 'pseudoc');
+                        $mdp = $this->getParametre($_POST, 'mdpc');
                         $mdp=md5($mdp);
                     $connexions=$this->ctrlConnexion->connecter($pseudo, $mdp);
 
@@ -117,9 +125,9 @@ class Routeur {
                     $telephone = $this->getParametre($_POST, 'telephone');
                    
                     $email = $this->getParametre($_POST, 'email');
-                    $pseudo = $this->getParametre($_POST, 'pseudo');
+                    $pseudo = $this->getParametre($_POST, 'pseudo1');
                     $avatar = $this->getParametre($_POST, 'avatar');
-                    $mdp = $this->getParametre($_POST, 'mdp');
+                    $mdp = $this->getParametre($_POST, 'mdp1');
                     $mdp =md5($mdp);
 
 
@@ -128,6 +136,7 @@ class Routeur {
                     if(isset($_POST['Inscription']))
                     {
                     $this->ctrlConnexion->connexion();
+                    echo 'dddd';
 
                     }
                 }
@@ -160,6 +169,18 @@ class Routeur {
                 }
                  elseif ($_GET['action']=='voirprofil') {
                   $this->ctrlProfil->voirprofil();
+
+                }
+                elseif ($_GET['action']=='contact') {
+                  $this->ctrlContact->vuecontact();
+
+                }
+                elseif ($_GET['action']=='entreprise') {
+                  $this->ctrlEntreprise->vueentreprise();
+
+                }
+                elseif ($_GET['action']=='service') {
+                  $this->ctrlService->vueservice();
 
                 }
                 else

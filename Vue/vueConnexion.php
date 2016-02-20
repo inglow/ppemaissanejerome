@@ -11,16 +11,16 @@
 
 if(isset($_SESSION['idp'])){echo "Vous êtes connecté";}else {?>
 <form method="post" action="index.php?action=connexion">
-   Votre Pseudo* : <input id="pseudo" name="pseudo" type="text" placeholder="Votre pseudo" 
+   Votre Pseudo* : <input id="pseudoc" name="pseudoc" type="text" placeholder="Votre pseudo" 
            required /><br/>
- Votre mot de passe : <input id="mdp" name="mdp" type="password" placeholder="Votre mot de passe" 
+ Votre mot de passe : <input id="mdpc" name="mdpc" type="password" placeholder="Votre mot de passe" 
            required /><br/>
     <input type="submit" value="Connexion" name="connexion">
 </form>
 <?php }
 
 
-if(isset($_POST['pseudo']) && $_POST['mdp'] != ''){
+if(isset($_POST['pseudoc']) && $_POST['mdpc'] != ''){
     echo 'OK';
 }
 else{

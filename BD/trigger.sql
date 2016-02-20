@@ -5,10 +5,21 @@ before insert on client
 for each row
 begin
 declare x int;
+declare num int;
+Select max(idP) into num from personne;
 Select count(*) into x from personne where idp=new.idpcl;
+if num is null
+then
+set num=1;
+else
+set num=num+1;
+end if;
+if new.idpcl=num
+then SIGNAL SQLSTATE  '45000' SET MESSAGE_TEXT='Erreur id';
+end if;
 if x=0 
 	then
-	insert into personne values(new.idpcl, new.nomp, new.prenomp, new.adresse, new.cp, new.telephone, new.email,
+	insert into personne (idp, nomp, prenomp, adresse, cp, telephone, email, avatar, pseudo, mdp) values(num, new.nomp, new.prenomp, new.adresse, new.cp, new.telephone, new.email,
 	new.avatar, new.pseudo, new.mdp);
 end if;
 Select count(*) into x from administrateur where ida=new.idpcl;
@@ -20,6 +31,8 @@ end if;
 end //
 delimiter ;
 
+
+
 drop trigger ajoutadmin;
 delimiter //
 create trigger ajoutadmin
@@ -27,10 +40,21 @@ before insert on administrateur
 for each row
 begin
 declare x int;
+declare num int;
+Select max(idP) into num from personne;
 Select count(*) into x from personne where idp=new.ida;
+if num is null
+then
+set num=1;
+else
+set num=num+1;
+end if;
+if new.ida=num
+then SIGNAL SQLSTATE  '45000' SET MESSAGE_TEXT='Erreur id';
+end if;
 if x=0 
 	then
-	insert into personne values(new.ida, new.nomp, new.prenomp, new.adresse, new.cp, new.telephone, new.email,
+	insert into personne (idp, nomp, prenomp, adresse, cp, telephone, email, avatar, pseudo, mdp) values (num, new.nomp, new.prenomp, new.adresse, new.cp, new.telephone, new.email,
 	new.avatar, new.pseudo, new.mdp);
 end if;
 Select count(*) into x from client where idpcl=new.ida;
@@ -41,6 +65,7 @@ if x>0 then SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='L administrateur ne peut √
 end if;
 end //
 delimiter ;
+
 drop trigger ajoutcoach;
 delimiter //
 create trigger ajoutcoach
@@ -48,10 +73,21 @@ before insert on coach
 for each row
 begin
 declare x int;
+declare num int;
 Select count(*) into x from personne where idp=new.idpco;
+Select max(idP) into num from personne;
+if num is null
+then
+set num=1;
+else
+set num=num+1;
+end if;
+if new.idpco=num
+then SIGNAL SQLSTATE  '45000' SET MESSAGE_TEXT='Erreur id';
+end if;
 if x=0 
 	then
-	insert into personne values(new.idpco, new.nomp, new.prenomp, new.adresse, new.cp, new.telephone, new.email,
+	insert into personne (idp, nomp, prenomp, adresse, cp, telephone, email, avatar, pseudo, mdp) values(num, new.nomp, new.prenomp, new.adresse, new.cp, new.telephone, new.email,
 	new.avatar, new.pseudo, new.mdp);
 end if;
 Select count(*) into x from client where idpcl=new.idpco;
@@ -65,6 +101,7 @@ if x>0 then SIGNAL SQLSTATE  '45000' SET MESSAGE_TEXT='Le coach est d√©ja gestio
 end if;
 end //
 delimiter ;
+
 drop trigger ajoutgestionnaire;
 delimiter //
 create trigger ajoutgestionnaire
@@ -72,10 +109,21 @@ before insert on gestionnaire
 for each row
 begin
 declare x int;
+declare num int;
 Select count(*) into x from personne where idp=new.idg;
+Select max(idP) into num from personne;
+if num is null
+then
+set num=1;
+else
+set num=num+1;
+end if;
+if new.idg=num
+then SIGNAL SQLSTATE  '45000' SET MESSAGE_TEXT='Erreur id';
+end if;
 if x=0 
 	then
-	insert into personne values(new.idg, new.nomp, new.prenomp, new.adresse, new.cp, new.telephone, new.email,
+	insert into personne (idp, nomp, prenomp, adresse, cp, telephone, email, avatar, pseudo, mdp) values (num, new.nomp, new.prenomp, new.adresse, new.cp, new.telephone, new.email,
 	new.avatar, new.pseudo, new.mdp);
 end if;
 Select count(*) into x from client where idpcl=new.idg;

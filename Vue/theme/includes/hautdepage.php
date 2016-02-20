@@ -17,7 +17,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a   href="index.php"> <font class="glyphicon glyphicon-home"> Accueil</font></a>
                         
-                        <li><a href="features.html">Notre entreprise</a>
+                        <li><a href="index?action=entreprise">Notre entreprise</a>
                         </li>
                         <?php if(isset($_SESSION['idp'])){ ?>
 
@@ -31,7 +31,7 @@
                                 <li><a href="index?action=voirprofil">Voir son profil</a>
                                 </li>
                                 <li><a href="index?action=profil">Modifier son</a>
-                                <li><a href="index?action=profil">Deconnexion</a>
+                                <li><a href="index?action=deconnexion">Deconnexion</a>
 
                                 </li>
                             </ul>
@@ -41,7 +41,7 @@
                         {
                         }
                         ?>
-                        <li><a href="features.html">Nos Services</a>
+                        <li><a href="index?action=service">Nos Services</a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Les coachs<b class="caret"></b></a>
@@ -54,7 +54,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="contact.html">Contactez nous</a>
+                        <li><a href="index?action=contact">Contactez nous</a>
                         </li>
                           <?php if(isset($_SESSION['idp'])){
 
@@ -64,19 +64,22 @@
 
                         ?>
                         <li class="">
-                            <a data-toggle="modal" href="#index.php?action=inscription" class="">Inscription</a>
+                            <a data-toggle="modal" href="index.php?action=inscription" class="">Inscription</a>
                         </li>
-                     
+                     <li class="">
+                            <a data-toggle="modal" href="#signUpModal" class="">Sign Up</a>
+                        </li>
+                    
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown">Connexion <b class="caret"></b></a>
                             <div class="dropdown-menu" style="padding: 15px;">
                                 <form role="form" class="form-menu" method="post" action="index.php?action=connexion">
                                     
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Username">
+                                        <input type="text" class="form-control" id="pseudo" name="pseudoc" placeholder="Username">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control"  id="mdp" name="mdp"placeholder="Password">
+                                        <input type="password" class="form-control"  id="mdp" name="mdpc"placeholder="Password">
                                     </div>
                                     <div class="checkbox">
                                         <label class="text-muted">

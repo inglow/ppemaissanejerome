@@ -9,10 +9,10 @@ class Inscription extends Modele {
 
     // Ajoute un commentaire dans la base
     public function ajouterPersonne($nomp, $prenomp, $adresse, $cp, $telephone, $email, $pseudos, $avatar, $mdp) {
-        $sql = 'insert into personne(nomp, prenomp, adresse, cp, telephone, email, pseudo, avatar, mdp)'
-            . ' values(?, ?, ?, ?, ?, ?, ?, ?, ?)';
-
-        $this->executerRequete($sql, array($nomp, $prenomp, $adresse, $cp, $telephone, $email, $pseudos, $avatar, $mdp));
+        $sql = 'insert into client(nomp, prenomp, adresse, cp, telephone,etat,email, pseudo, avatar, mdp)'
+            . ' values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+            $etat="actif";
+        $this->executerRequete($sql, array($nomp, $prenomp, $adresse, $cp, $telephone, $etat ,$email, $pseudos, $avatar, $mdp));
     }
 }
 ?>
