@@ -47,7 +47,7 @@ abstract class Modele {
         if ($this->bdd == null) {
             // Création de la connexion
             $this->bdd = new PDO('mysql:host=127.0.0.1;dbname=supremcoach;charset=utf8',
-                    'root', '92i',
+                    'root', '',
                     array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         }
         return $this->bdd;

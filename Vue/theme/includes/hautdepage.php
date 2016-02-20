@@ -17,7 +17,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a   href="index.php"> <font class="glyphicon glyphicon-home"> Accueil</font></a>
                         
-                        <li><a href="index?action=entreprise">Notre entreprise</a>
+                        <li><a href="index.php?action=entreprise">Notre entreprise</a>
                         </li>
                         <?php if(isset($_SESSION['idp'])){ ?>
 
@@ -41,7 +41,7 @@
                         {
                         }
                         ?>
-                        <li><a href="index?action=service">Nos Services</a>
+                        <li><a href="index.php?action=service">Nos Services</a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Les coachs<b class="caret"></b></a>
@@ -54,7 +54,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="index?action=contact">Contactez nous</a>
+                        <li><a href="index.php?action=contact">Contactez nous</a>
                         </li>
                           <?php if(isset($_SESSION['idp'])){
 
