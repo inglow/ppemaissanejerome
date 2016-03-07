@@ -95,7 +95,7 @@ class Routeur {
                    
                     $email = $this->getParametre($_POST, 'email');
                     $pseudo = $this->getParametre($_POST, 'pseudo');
-                    $avatar = $this->getParametre($_POST, 'avatar');
+                    $avatar = $_FILES['avatar']['name'];
                     $mdp = $this->getParametre($_POST, 'mdp');
                     $mdp =md5($mdp);
                     $this->ctrlAdmin->admin($nomp, $prenomp, $adresse, $cp, $telephone, $email, $pseudo, $avatar, $mdp);
@@ -126,7 +126,7 @@ class Routeur {
                    
                     $email = $this->getParametre($_POST, 'email');
                     $pseudo = $this->getParametre($_POST, 'pseudo1');
-                    $avatar = $this->getParametre($_POST, 'avatar');
+                    $avatar = $_FILES['avatar']['name'];
                     $mdp = $this->getParametre($_POST, 'mdp1');
                     $mdp =md5($mdp);
 
@@ -151,13 +151,13 @@ class Routeur {
 
                     $telephone = $this->getParametre($_POST, 'telephone');
                     $email = $this->getParametre($_POST, 'email');
-                    $pseudo = $this->getParametre($_POST, 'pseudo');
+                    $pseudo = $this->getParametre($_POST, 'pseudo1');
                     $avatar = $this->getParametre($_POST, 'avatar');
-                    $mdp = $this->getParametre($_POST, 'mdp');
-                    $idp = $this->getParametre($_POST, 'idp');
+                    $mdp = $this->getParametre($_POST, 'mdp1');
+                    
 
                     $mdp =md5($mdp);
-                    $this->ctrlProfil->modifierProfil($nomp, $prenomp, $adresse, $cp, $telephone, $email, $pseudo, $avatar, $mdp, $idp);
+                    $this->ctrlProfil->modifierProfil($nomp, $prenomp, $adresse, $cp, $telephone, $email, $pseudo, $avatar, $mdp);
                    $this->ctrlProfil->voirprofil();
                   }
                   else 

@@ -27,9 +27,9 @@ class ControleurProfil {
     }
 
     // Ajoute un commentaire à un billet
-    public function modifierProfil($nomp, $prenomp, $adresse, $cp, $telephone, $email, $pseudo, $avatar, $mdp, $idp) {
+    public function modifierProfil($nomp, $prenomp, $adresse, $cp, $telephone, $email, $pseudo, $avatar, $mdp) {
         // Sauvegarde du commentaire
-
+        $idp=$_SESSION['idp'];
         $this->profil->updateProfil($nomp, $prenomp, $adresse, $cp, $telephone, $email, $pseudo, $avatar, $mdp, $idp);
         
     }

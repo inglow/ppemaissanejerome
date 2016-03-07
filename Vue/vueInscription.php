@@ -1,7 +1,6 @@
 <html>
 <head>
   <meta charset="UTF-8">
-<title>User Registration Using PHP Ajax</title>
 <script type="text/javascript" src="Vue/ajax/jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){

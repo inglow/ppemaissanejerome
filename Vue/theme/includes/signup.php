@@ -1,3 +1,35 @@
+  <?php
+        if( isset($_POST['Inscription']) ) // si formulaire soumis
+{
+    $content_dir = 'Vue/avatar'; // dossier où sera déplacé le fichier
+
+    $tmp_file = $_FILES['avatar']['tmp_name'];
+
+    if( !is_uploaded_file($tmp_file) )
+    {
+        exit("Le fichier est introuvable");
+    }
+
+    // on vérifie maintenant l'extension
+    $type_file = $_FILES['avatar']['type'];
+
+    if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') )
+    {
+        exit("Le fichier n'est pas une image");
+    }
+
+    // on copie le fichier dans le dossier de destination
+    $name_file = $_FILES['avatar']['name'];
+
+    if( !move_uploaded_file($tmp_file, $content_dir . $name_file) )
+    {
+        exit("Impossible de copier le fichier dans $content_dir");
+    }
+
+    echo "Le fichier a bien été uploadé";
+}
+    
+    ?>
   <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -238,7 +270,7 @@ $(document).ready( function () {
 <body>
 
 <h2>Inscription</h2>
-<form method="post" action="index.php?action=sinscrire" id="form2">
+<form method="post" action="index.php?action=sinscrire" id="form2" enctype="multipart/form-data">
 
 *pseudo:<input type="text" name="pseudo1" id="pseudo1" placeholder="Votre pseudo" class="form-control" required/><label id="pseudo2"></label><br>
 *mdp: <input type="password" name="mdp1" id="mdp1" placeholder="Votre mot de passe" class="form-control" required/><label id="mdp2"></label><br>
@@ -248,7 +280,7 @@ $(document).ready( function () {
 Votre adresse:  <input id="adresse" name="adresse" type="text" placeholder="Votre adresse" class="form-control"><label id="adresse2"></label><br/>
 *Votre code postal:  <input id="cp" name="cp" type="text" placeholder="Votre Code postal" class="form-control"required><label id="cp2"></label><br/>
 *Votre téléphone:  <input id="telephone" name="telephone" type="text" placeholder="Votre téléphone" class="form-control" required><label id="telephone2"></label><br>Pour vous joindre juste en cas de non-présence au rendez-vous<br/>
-Votre avatar ou photos:  <input id="avatar" name="avatar" type="text" placeholder="Votre avatar" class="form-control"><br/>
+Votre avatar ou photos:  <input id="avatar" name="avatar" type="file" placeholder="Votre avatar" class="form-control"><br/>
 Les champs obligatoire sont marqués avec une étoile.
 <br>
 <div id="erreur"></div>
@@ -260,3 +292,35 @@ Les champs obligatoire sont marqués avec une étoile.
             </div>
         </div>
     </div>
+     <?php
+        if( isset($_POST['Inscription']) ) // si formulaire soumis
+{
+    $content_dir = 'Vue/avatar'; // dossier où sera déplacé le fichier
+
+    $tmp_file = $_FILES['avatar']['tmp_name'];
+
+    if( !is_uploaded_file($tmp_file) )
+    {
+        exit("Le fichier est introuvable");
+    }
+
+    // on vérifie maintenant l'extension
+    $type_file = $_FILES['avatar']['type'];
+
+    if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') )
+    {
+        exit("Le fichier n'est pas une image");
+    }
+
+    // on copie le fichier dans le dossier de destination
+    $name_file = $_FILES['avatar']['name'];
+
+    if( !move_uploaded_file($tmp_file, $content_dir . $name_file) )
+    {
+        exit("Impossible de copier le fichier dans $content_dir");
+    }
+
+    echo "Le fichier a bien été uploadé";
+}
+    
+    ?>

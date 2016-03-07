@@ -17,7 +17,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a   href="index.php"> <font class="glyphicon glyphicon-home"> Accueil</font></a>
                         
-                        <li><a href="index?action=entreprise">Notre entreprise</a>
+                        <li><a href="index.php?action=entreprise">Notre entreprise</a>
                         </li>
                         <?php if(isset($_SESSION['idp'])){ ?>
 
@@ -28,10 +28,10 @@
                             <ul class="dropdown-menu">
                                 <li>
                                 </li>
-                                <li><a href="index?action=voirprofil">Voir son profil</a>
+                                <li><a href="index.php?action=voirprofil">Voir son profil</a>
                                 </li>
-                                <li><a href="index?action=profil">Modifier son</a>
-                                <li><a href="index?action=deconnexion">Deconnexion</a>
+                                <li><a href="index.php?action=profil">Modifier son</a>
+                                <li><a href="index.php?action=deconnexion">Deconnexion</a>
 
                                 </li>
                             </ul>
@@ -41,7 +41,7 @@
                         {
                         }
                         ?>
-                        <li><a href="index?action=service">Nos Services</a>
+                        <li><a href="index.php?action=service">Nos Services</a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Les coachs<b class="caret"></b></a>
@@ -54,7 +54,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="index?action=contact">Contactez nous</a>
+                        <li><a href="index.php?action=contact">Contactez nous</a>
                         </li>
                           <?php if(isset($_SESSION['idp'])){
 
@@ -63,11 +63,9 @@
                         {
 
                         ?>
-                        <li class="">
-                            <a data-toggle="modal" href="index.php?action=inscription" class="">Inscription</a>
-                        </li>
+                        
                      <li class="">
-                            <a data-toggle="modal" href="#signUpModal" class="">Sign Up</a>
+                            <a data-toggle="modal" href="#signUpModal" class="">Inscription</a>
                         </li>
                     
                         <li class="dropdown">
