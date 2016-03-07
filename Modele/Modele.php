@@ -112,4 +112,4 @@ abstract class Modele {
     }
 
 }
->>>>>>> origin/master
+
